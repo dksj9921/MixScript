@@ -19,6 +19,8 @@ public class readScript {
 
             while ((temp = br.readLine()) != null) {
                 if(first_drop) {
+                    System.out.println(temp.substring(3));
+                    System.out.println();
                     first_drop = false;
                     continue;
                 }
@@ -30,7 +32,6 @@ public class readScript {
 
                 change_number1++;
                 change_number2++;
-
             }
 
             int[] randomNumbers = new int[sentence.size()];
@@ -51,17 +52,17 @@ public class readScript {
             int[] answer_1 = new int[sentence.size()];
             int[] answer_2 = new int[sentence.size()];
 
-
             HashMap<Integer, Integer> answer = new HashMap<>();
 
             for(int i=0; i<sentence.size();i++) {
                 String temp_sentence = " ";
                 temp_sentence = sentence.get(randomNumbers[i]-1);
+                String number1 = Integer.toString(randomNumbers[i]);
                 String number2 = Integer.toString(i+1);
                 answer_1[i] = randomNumbers[i];
                 answer_2[i] = i+1;
                 answer.put(answer_1[i],answer_2[i]);
-                mixed_sentence.add(temp_sentence.replaceFirst("1", number2));
+                mixed_sentence.add(temp_sentence.replaceFirst(number1, number2));
             }
             for(int i = 0 ;i < sentence.size();i++) {
                 System.out.println(mixed_sentence.get(i)+" ");
@@ -81,8 +82,6 @@ public class readScript {
 
             System.out.println(write_braket);
             System.out.println();
-
-
 
             Iterator<Integer> iteratorKey = answer.keySet().iterator( );
 
